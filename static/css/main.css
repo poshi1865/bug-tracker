@@ -1,0 +1,178 @@
+#desc {
+	float: centre;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	max-width: 35rem;
+	background-color: #e3e3e3;
+	border: 0.25px #000 solid;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-bottom: 1rem;
+	box-shadow: #000 0px 0px 20px;
+	transition: 0.5s;
+}
+#desc:hover {
+	padding: 2rem;
+	box-shadow: #000 0px 5px 30px;
+}
+#submit_form {
+	background-color: #e3e3e3;
+	border: 0.25px #000 solid;
+	margin-left: 2rem;
+	margin-top: 1rem;
+	margin: 0 auto;
+	float: left;
+	padding: 1rem;
+	box-shadow: #000 0px 0px 20px;
+	max-width: 40.25rem;
+	transition: 0.2s;
+}
+#submit_form:hover {
+	padding: 2rem;
+	box-shadow: #000 0px 0px 35px;
+}
+#minor {
+	color: 	green;
+	text-shadow: #000 1px 0px 2px; /*colour, x-offset, y-offset, blur radius*/
+}
+#moderate {
+	color: yellow;
+	text-shadow: #000 1px 0px 2px;
+}
+#major {
+	color: orange;
+	text-shadow: #000 1px 0px 2px;
+}
+#game_breaking {
+	color: red;
+	text-shadow: #000 1px 0px 2px;
+}
+#bug_severity {
+	width: 15rem;
+}
+#debug_info {
+	width: 40rem;
+	height: 7rem;
+	border: #000 0.25px solid;
+	box-shadow: inset #000 0px 0px 5px;
+	transition: 0.2s;
+}
+#debug_info:hover {
+	box-shadow: inset #000 0px 0px 15px;
+}
+#details {
+	width: 40rem;
+	height: 7rem;
+	border: #000 0.25px solid;
+	box-shadow: inset #000 0px 0px 5px;
+	transition: 0.2s;
+}
+#details:hover {
+	box-shadow: inset #000 0px 0px 15px;
+}
+h1 {
+	background-color: #a3a3a3;
+	padding: 1rem;
+	border: 0.25px solid #000;
+	box-shadow: inset #000 0px 0px 7px;
+	transition: 0.2s;
+}
+h1:hover {
+	box-shadow: inset #000 0px 0px 15px;
+}
+#email_input {
+	width: 17rem;
+	height: 1.35rem;
+	border: solid #000 0.25px;
+}
+
+body,  html {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: lightblue;
+}
+.content {
+    margin: 0 auto;
+    width: 400px;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.form {
+	float: centre;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	max-width: 35rem;
+}
+
+.button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.button:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+
+table {
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+}
+
+content {
+    width: 70%;
+}
