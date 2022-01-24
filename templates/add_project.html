@@ -1,0 +1,26 @@
+
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Bug Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_project.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="title">
+	<h1 id="add_project_title">Add a new project</h1>
+</div>
+<div id="submit_form">
+	<form action="/add_project" method="post">
+		<p class="element">Project Name:</p>
+		<input type="text" id="name" name="name">
+		
+		<p class="element">Description:</p>
+		<textarea type="text" id="desc" name="desc" ></textarea>
+
+		<p class="element">Once you have confirmed everything, hit 'submit'.</p>
+		<input id="button_submit" type="submit" name="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}

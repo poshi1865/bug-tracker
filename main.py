@@ -1,7 +1,3 @@
-'''
-author: Naachiket Pant
-email: naachiketpant88@gmail.com
-'''
 
 import mysql.connector
 from mysql.connector import Error
@@ -61,7 +57,7 @@ try:
         #cursor object
         cursor = connection.cursor()
 
-        values = [1, 'Naachiket Pant', 'naachiketpant88@gmail.com', 2]
+        values = [2, 'Naachiket Pant', 'naachiketpant88@gmail.com', 2]
         insert(cursor, 'developer', values)
 
         connection.commit()

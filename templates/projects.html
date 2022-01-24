@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+<title>Bug Tracker</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Projects</h1>
+    {% if query|length < 1 %}
+    <h1 style="text-align: center">There are no projects.</h1>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="8%">Project ID</th>
+                <th>Name</th>
+                <th width="50%">Description</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in query %}
+            <tr>
+                {% for value in row %}
+                <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+    </table>
+    {% endif %}
+
+    <div style="text-align: center">
+        <form action="/projects" method="POST">
+            <input class="button" type="submit" value="Add a new project">
+        </form>
+    </div>
+</div>
+{% endblock %}

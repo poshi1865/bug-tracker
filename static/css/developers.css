@@ -1,3 +1,5 @@
+
+
 #title {
 	margin-left: 49rem;
 }
@@ -173,10 +175,10 @@ td {
 
 
 table {
-	width: 1350px; 
+	width: 1150px; 
 	border-collapse: collapse; 
 	margin:30px auto;
-	margin-left:-320px;
+	margin-left:-250px;
 }
 
 /* Zebra striping */
@@ -185,7 +187,8 @@ tr {
 }
 
 th { 
-	background: #a30000; 
+	background: #3498db; 
+	background: #808080; 
 	color: white; 
 	font-weight: bold; 
 }

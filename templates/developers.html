@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/developers.css') }}">
+<title>Bug Tracker</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Developers</h1>
+    {% if query|length < 1 %}
+    <h1 style="text-align: center">There are no developers working on any project right now.</h1>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Developer ID</th>
+                <th>Name</th>
+                <th >Email</th>
+                <th >Assigned Project</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in query %}
+            <tr>
+                {% for value in row %}
+                <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+    </table>
+    {% endif %}
+
+    <div style="text-align: center">
+        <form action="/developers" method="POST">
+            <input class="button" type="submit" value="Add Developer">
+        </form>
+    </div>
+</div>
+{% endblock %}

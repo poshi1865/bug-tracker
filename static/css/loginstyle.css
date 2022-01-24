@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+*{
+  padding: 0; margin: 0;
+  box-sizing: border-box;
+  font-family: 'PT Serif', serif;
+  user-select: none;
+}
+.content{
+  width: 100vw; min-height: 100vh;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  background-color: lightblue;
+  color: black;
+}
+h1{
+  font-size: 4rem;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  padding: 20px 0;
+}
+
+input[type="email"], input[type="password"], input[type="submit"]{
+  width: 200px; height: 45px;
+  font-size: 15px;
+  outline: none;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #E3F2FD;
+  color: black;
+  background-color: #FFFFFF;
+  border-radius: 100px;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+}
+input::placeholder{
+  color: rgba(128,128,128,0.7);
+}
+input[type="submit"]{
+  padding: 0;
+  cursor: pointer;
+  transition: 0.5s linear;
+}
+input[type="submit"]:hover{
+  background-color: #E3F2FD;
+  color: black;
+  font-weight: bolder;
+}

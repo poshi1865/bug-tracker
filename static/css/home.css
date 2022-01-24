@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Dosis', sans-serif;
+}
+
+aside{
+  width: 300px;
+  height: 100vh;
+  background: rgb(0,0,255);
+  background: #191970;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+aside nav{
+  font-size: 25px;
+  font-weight: bold;
+}
+aside nav ul{
+  list-style:none;
+}
+aside nav ul a li {
+  color: #fff;
+  position:relative;
+  width:calc(100% - 1em);
+  padding:2.0em 0 1em 1em;
+}
+aside nav ul a li:hover {
+  color: #000;
+  background: white; 
+  border-radius: 0.5em 0em 0em 0.5em;
+}
+aside nav ul a li:hover::before {
+    content: '';
+    position: absolute;
+    background: orange;
+    right: 0px;
+    top: -1em;
+    border-radius: 0em 0em 0.5em 0em;
+    border: rgb(0,0,255) 0em solid;
+    box-shadow: 0.5em 0.5em 0 0 rgb(173 216 230);
+}
+aside nav ul a li:hover::after {
+    content: '';
+    position: absolute;
+    background: orange;
+    right: 0px;
+    bottom: -1em;
+    border-radius: 0em 0.5em 0.5em 0em;
+    border: rgb(0,0,255) 0em solid;
+    box-shadow: 0.5em -0.5em 0 0 rgb(173 216 230);
+}
+aside nav ul a{
+  color: inherit;
+  text-decoration: none;
+}

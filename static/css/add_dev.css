@@ -1,51 +1,30 @@
+
 #title {
 	margin-left: 49rem;
 }
 #submit_form {
-	height: 720px;
+	height: 400px;
 	background-color: #e3e3e3;
 	border: 5.25px #000 solid;
-	margin-left: 45rem;
+	margin-left: 48rem;
 	padding: 1.5rem;
 	box-shadow: #000 0px 0px 20px;
-	max-width: 40.25rem;
+	max-width: 30.25rem;
 	font-weight: bold;
 	font-size: 20px;
-	display: flex;
-	column-gap: 40px;
-	justify-content: space-between;
 }
 #bug_report_title {
-    margin-top: 40px;
 	margin-left: 150px;
-}
-#bug_priority {
-    width: 160px;
-    height: 30px;
-    font-size: 18px;
-}
-#bug_title {
-    width: 160px;
-    height: 25px;
-    font-size: 18px;
+    margin-top: 150px;
 }
 #name {
     width: 160px;
     height: 25px;
     font-size: 18px;
 }
-#bug_desc {
-    width: 360px;
-    height: 125px;
-    font-size: 18px;
-}
-#assigned_to {
+#email {
     width: 160px;
     height: 25px;
-    font-size: 18px;
-}
-#due_date {
-    width: 160px;
     font-size: 18px;
 }
 #project_id {
@@ -53,11 +32,11 @@
     font-size: 18px;
 }
 .element {
-	margin-top: 20px;
+	margin-top: 30px;
 }
 #button_submit {
-    margin-left: 17rem;
-    margin-top: 1rem;
+    margin-left: 12rem;
+    margin-top: 2.5rem;
     line-height: 2.5;
     padding: 0 20px;
     font-size: 1rem;
@@ -173,10 +152,10 @@ td {
 
 
 table {
-	width: 1350px; 
+	width: 1150px; 
 	border-collapse: collapse; 
 	margin:30px auto;
-	margin-left:-320px;
+	margin-left:-250px;
 }
 
 /* Zebra striping */
@@ -185,7 +164,7 @@ tr {
 }
 
 th { 
-	background: #a30000; 
+	background: #3498db; 
 	color: white; 
 	font-weight: bold; 
 }

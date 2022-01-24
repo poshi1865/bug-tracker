@@ -1,44 +1,43 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Bug Report Form</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-	<body>
-		<main>
-			<div id="desc">
-				<h1>Bug Report Form</h1>
-			<div id="submit_form">
-				<form action="/report_bug" method="post">
-					<p>Bug Title</p>
-					<input type="text" id="bug_title" name="bug_title" >
-					<p>Bug Priority (required):</p>
-					<select name="bug_priority" id="bug_priority" required>
-						<option value="--Please Select--">--Please Select--</option>
-						<option value="Low">Low</option>
-						<option value="Medium">Medium</option>
-						<option value="High">High</option>
-					</select>
-					
-					<p>Bug Description:</p>
-					<input type="text" name="bug_desc" id="bug_desc">
-					
-					<p>On Project ID: </p>
-					<input type="text" id="project_id" name="project_id" >
-          
-					<p>Assign To: </p>
-					<input type="text" id="assigned_to" name="assigned_to" > 
-          
-					<p>Due Date: </p>
-					<input type="text" id="due_date" name="project_id" >          
-          
-    
-					
-					<p>Once you have confirmed everything in your bug report, hit 'submit'. You won't be able to change your bug report later.</p>
-					<input type="submit" id="submit" name="submit" value="Submit">
-				</form>
-			</div>
-		</main>
-	</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Bug Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="title">
+	<h1 id="bug_report_title">Bug Report Form</h1>
+</div>
+<div id="submit_form">
+	<form action="/report_bug" method="post">
+		<p class="element">Bug Title:</p>
+		<input type="text" id="bug_title" name="bug_title">
+
+		<p class="element">Bug Priority:</p>
+		<select name="bug_priority" id="bug_priority" required>
+			<option value="--Please Select--">--Please Select--</option>
+			<option value="Low">Low</option>
+			<option value="Medium">Medium</option>
+			<option value="High">High</option>
+		</select>
+		
+		<p class="element">Bug Description:</p>
+		<textarea style="height:170px;width:470px" type="text" name="bug_desc" id="bug_desc"></textarea>
+		
+		<p class="element">On Project ID: </p>
+		<input type="number" id="project_id" name="project_id" >
+
+		<p class="element">Assign To (Enter the developer's ID): </p>
+		<input type="number" id="assigned_to" name="assigned_to" > 
+
+		<p class="element">Due Date: </p>
+		<input placeholder="YYYY-MM-DD" type="text" id="due_date" name="due_date" >          
+
+
+		
+		<p class="element">Once you have confirmed everything in your bug report, hit 'submit'. You won't be able to change your bug report later.</p>
+		<input id="button_submit" type="submit" name="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}

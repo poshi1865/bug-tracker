@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <title>Bug Tracker</title>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Bug Tracker</h1>
+    <h1 style="text-align: center">Active Issues</h1>
     {% if query|length < 1 %}
-    <h4 style="text-align: center">There are no active issues.</h4>
+    <h1 style="text-align: center">There are no active issues.</h1>
     {% else %}
     <table class="table">
         <thead>
             <tr>
                 <th>Issue ID</th>
-                <th>Project ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Priority</th>
-                <th>Created On</th>
-                <th>Due Date</th>
-                <th>Developer ID</th>
+                <th width="12%">On Project</th>
+                <th width="12%">Title</th>
+                <th width="35%">Description</th>
+                <th width="7%">Priority</th>
+                <th width="9%">Created On</th>
+                <th width="9%">Due Date</th>
+                <th width="30%">Assigned Developer</th>
             </tr>
         </thead>
         <tbody>
