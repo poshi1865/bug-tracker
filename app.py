@@ -30,6 +30,8 @@ def login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == "GET":
+
+
         #Establish connection with database
         connection = mysql.connect()
         cursor = connection.cursor()
@@ -68,7 +70,7 @@ def projects():
         connection.close()
 
         return render_template("projects.html", query = data)
-    
+
     elif request.method == "POST":
         return redirect("/add_project")
 
@@ -105,8 +107,9 @@ def report_bug():
         cursor = connection.cursor()
 
         report = []
+
         #getting new issue_id
-        cursor.execute("select max(issue_id) from issue")
+        cursor.execute("select max(issue_id) from (select issue_id from issue union all select issue_id from resolved_bugs) T")
         try:
             issue_id_new = int(str(cursor.fetchone()[0])) + 1
         except:
@@ -203,7 +206,47 @@ def add_dev():
     else:
         return render_template("add_dev.html")
 
+@app.route('/submit_resolution', methods=['POST', 'GET'])
+def submit_resolution():
+    if request.method == "GET":
+        return render_template("submit_resolution.html")
+    elif request.method == "POST":
+        #Establish connection with database
+        connection = mysql.connect()
+        cursor = connection.cursor()
+        data = []
 
+        try:
+            bug_title = request.form.get("bug_title")
+            bug_id = int(request.form.get("bug_id"))
+            cursor.execute("select project_id from issue where issue_id = %s", bug_id)
+            project_id = int(cursor.fetchone()[0])
+
+            #check if bug title exists
+            cursor.execute("select title from issue where issue_id = %s", bug_id)
+            if cursor.fetchone()[0] != bug_title:
+                connection.close()
+                return "Input bug title is wrong, does not match"
+
+            data.append(bug_id)
+            data.append(request.form.get("reso_summary"))
+            data.append(date.today().strftime('%Y-%m-%d'))
+            data.append(int(request.form.get("developer_id")))
+            data.append(project_id)
+
+            #insert into resolved_bugs table
+            cursor.execute("insert into resolved_bugs values(%s,%s,%s,%s,%s)", data)
+
+            #delete from issue table
+            cursor.execute("delete from issue where issue_id = %s", bug_id)
+
+        except:
+            connection.close()
+            return "INVALID ENTRIES"
+
+        connection.commit()
+        connection.close()
+        return "Submitted successfully"
 
 if __name__ == "__main__":
     app.run(port = 8000, debug=True)

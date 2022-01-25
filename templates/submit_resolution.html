@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Bug Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/submit_resolution.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="title">
+	<h1 id="bug_report_title">Submit bug resolution</h1>
+</div>
+<div id="submit_form">
+	<form action="/submit_resolution" method="post">
+
+		<p class="element">Bug ID: </p>
+		<input type="number" min="0" id="number" name="bug_id" > 
+
+		<p class="element">Bug title:</p>
+		<input type="text" id="name" name="bug_title">
+		
+		<p class="element">Your ID:</p>
+		<input type="number" min="0" id="number" name="developer_id" >
+
+		<p class="element">Resolution Summary:</p>
+		<textarea style="height:170px;width:470px" type="text" name="reso_summary" id="name"></textarea>
+
+		<p class="element">Once you have confirmed everything, hit 'submit'.</p>
+		<input id="button_submit" type="submit" name="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}

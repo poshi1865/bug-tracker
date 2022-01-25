@@ -97,7 +97,15 @@
 	box-shadow: inset #000 0px 0px 15px;
 }
 h1 {
+    color: #a30000;
 	padding: 1rem;
+	transition: 0.2s;
+	margin-left: 190px;
+	margin-top: 70px;
+}
+h2 {
+	padding: 1rem;
+    font-size: 33px;
 	transition: 0.2s;
 	margin-left: 190px;
 	margin-top: 70px;
@@ -179,7 +187,6 @@ table {
 	margin-left:-320px;
 }
 
-/* Zebra striping */
 tr { 
 	background: #eee; 
 }
