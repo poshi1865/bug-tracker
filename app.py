@@ -31,7 +31,6 @@ def login():
 def index():
     if request.method == "GET":
 
-
         #Establish connection with database
         connection = mysql.connect()
         cursor = connection.cursor()
@@ -39,12 +38,83 @@ def index():
         cursor.execute("select * from issue")
         data = list(cursor.fetchall())
 
+
+        #Taking runtime bugs from intellij
+        cursor.execute("""select max(issue_id) from
+                          (select issue_id from issue union all select issue_id from resolved_bugs) T""")
+        try:
+            issue_id_new = int(str(cursor.fetchone()[0])) + 1
+        except:
+            issue_id_new = 1
+
+        log_file = open("iLogs", "r")
+        flag = 0
+        s = log_file.read().splitlines()
+        log_file.close()
+        open("iLogs", "w").close() #erase contents of file
+        error_message = "" 
+        title = ""
+
+        #getting error message 
+        flag = 0
+        for i in s:
+            i = i.strip()
+            if i.startswith("Exception"):
+                x = i.split()
+                for a in x:
+                    if a.startswith("java.lang"):
+                        error_message = error_message + a
+                        title = a[10:]
+                        title = title[0:len(title) - 1]
+                if "at" in i:
+                    error_message = error_message + i
+
+            if i.startswith("at"):
+                error_message = error_message + " " +  i
+                break
+        
+        #Check if there is already a bug for that error
+        same = False
+        for i in data:
+            if i[3] == error_message or error_message == "":
+                same = True
+                
+        if same == False:
+            cursor.execute("select project_id from project where name=%s","Sorting Visualizer")
+            project_id = int(cursor.fetchone()[0])
+            cursor.execute("select developer_id from developer where project_id=%s", project_id)
+            assign_to = int(cursor.fetchone()[0])
+
+            #Adding bug to table
+            report = []
+            report.append(issue_id_new) #create new issue_id
+            report.append(project_id) #Appending project id for Sorting Visualizer
+            report.append(title)
+            report.append(error_message)
+            report.append("Low")
+            report.append(date.today().strftime('%Y-%m-%d'))
+            report.append(date.today().strftime('%Y-%m-%d'))
+            report.append(assign_to)
+            print(report)
+
+            #Forming query
+            query = """insert into issue values
+            (%s, %s, %s, %s, %s, %s, %s, %s)"""
+
+            try:
+                cursor.execute(query, report)
+            except:
+                return "INVALID ENTRIES FOR ISSUE PLEASE CHECK AND TRY AGAIN"
+
+        ####################################
+
         #Get the names corresponding to the project_id and developer_id
         i = 0
         for i in range(len(data)):
             data[i] = list(data[i])
             p_id = data[i][1]
             d_id = data[i][7]
+            desc = data[i][3]
             cursor.execute("select name from project where project_id=%s", p_id)
             project_name = cursor.fetchone()[0]
             cursor.execute("select name from developer where developer_id=%s", d_id)
@@ -52,6 +122,7 @@ def index():
             data[i][1] = project_name + " (id: " + str(p_id) + ")"
             data[i][7] = developer_name + " (id: " + str(d_id) + ")"
 
+        connection.commit()
         connection.close()
 
         return render_template("index.html", query = data)
@@ -109,7 +180,8 @@ def report_bug():
         report = []
 
         #getting new issue_id
-        cursor.execute("select max(issue_id) from (select issue_id from issue union all select issue_id from resolved_bugs) T")
+        cursor.execute("""select max(issue_id) from
+                          (select issue_id from issue union all select issue_id from resolved_bugs) T""")
         try:
             issue_id_new = int(str(cursor.fetchone()[0])) + 1
         except:
@@ -159,6 +231,10 @@ def add_project():
             data.append(request.form.get("name"))
             data.append(request.form.get("desc"))
             data.append(date.today().strftime('%Y-%m-%d'))
+            
+            for i in data:
+                if i == "":
+                    return "CANNOT ENTER NULL VALUES"
 
             #Forming query
             query = """insert into project values(%s, %s, %s, %s)"""
