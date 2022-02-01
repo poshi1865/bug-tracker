@@ -5,7 +5,6 @@
   padding:0;
   font-family: 'Dosis', sans-serif;
 }
-
 aside{
   width: 300px;
   height: 100vh;
@@ -26,7 +25,7 @@ aside nav ul a li {
   color: #fff;
   position:relative;
   width:calc(100% - 1em);
-  padding:2.0em 0 1em 1em;
+  padding:1.0em 0 1em 1em;
 }
 aside nav ul a li:hover {
   color: #000;

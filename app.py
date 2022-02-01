@@ -5,10 +5,10 @@ from datetime import date
 app = Flask(__name__)
 mysql = MySQL()
 
-app.config['MYSQL_DATABASE_USER'] = 'naachiket'
+app.config['MYSQL_DATABASE_USER'] = ''
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'bug_tracker'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = ''
 mysql.init_app(app)
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -37,7 +37,6 @@ def index():
 
         cursor.execute("select * from issue")
         data = list(cursor.fetchall())
-
 
         #Taking runtime bugs from intellij
         cursor.execute("""select max(issue_id) from
